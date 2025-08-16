@@ -1,0 +1,5 @@
+:root { --radius: 16px; }
+.card { border-radius: var(--radius) !important; }
+.btn { border-radius: 999px !important; }
+.table thead th { background: #111827; color: #fff; }
+.shadow-soft { box-shadow: 0 10px 25px rgba(0,0,0,.08); }
