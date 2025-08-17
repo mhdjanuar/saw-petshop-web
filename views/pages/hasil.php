@@ -21,6 +21,8 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $options->set('isRemoteEnabled', true);
     $dompdf = new Dompdf($options);
 
+    $logoUri = 'https://i.ibb.co.com/MxMZ73BJ/petshop-200.png';
+
     // SAW QUERY
     $query = "
         SELECT 
@@ -66,6 +68,14 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $html = '
     <style>
         body { font-family: Arial, sans-serif; font-size: 12px; }
+        .header { text-align: center; }
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .header h2 { margin: 0; }
+        .sub-header { font-size: 12px; }
         table {
             border-collapse: collapse;
             width: 100%;
@@ -88,10 +98,13 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
         }
     </style>
 
-    <h2 style="text-align:center;">Arzello Petshop</h2>
-    <p style="text-align:center;">Jl. Pendowo Raya NO. 105 Kelurahan Limo, Kecamatan Limo, Depok.</p>
-    <hr>
-    <h3 style="text-align:center;">Laporan Hasil Perankingan (SAW)</h3>
+    <div class="header">
+        <img src="' . $logoUri . '" alt="Logo Arzello Petshop" />
+        <h2>Arzello Petshop</h2>
+        <div class="sub-header">Jl. Pendowo Raya NO. 105 Kelurahan Limo, Kecamatan Limo, Depok.</div>
+        <hr>
+        <h3>Laporan Hasil Perankingan</h3>
+    </div>
 
     <table>
         <thead>

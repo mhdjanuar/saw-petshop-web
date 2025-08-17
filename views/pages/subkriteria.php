@@ -29,11 +29,19 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
                          ORDER BY sc.id");
 
     // URL logo
-    $logoUrl = 'https://i.ibb.co/MxMZ73BJ/petshop-200.png';
+    $logoUri = 'https://i.ibb.co.com/MxMZ73BJ/petshop-200.png';
 
     $html = '
     <style>
         body { font-family: Arial, sans-serif; font-size: 12px; }
+        .header { text-align: center; }
+        .header img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .header h2 { margin: 0; }
+        .sub-header { font-size: 12px; }
         table {
             border-collapse: collapse;
             width: 100%;
@@ -54,24 +62,15 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
             font-size: 12px;
             text-align: right;
         }
-        .header {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .header img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 5px;
-        }
     </style>
 
     <div class="header">
-        <img src="' . $logoUrl . '" alt="Logo Arzello Petshop" />
+        <img src="' . $logoUri . '" alt="Logo Arzello Petshop" />
         <h2>Arzello Petshop</h2>
-        <p>Jl. Pendowo Raya NO. 105 Kelurahan Limo, Kecamatan Limo, Depok.</p>
+        <div class="sub-header">Jl. Pendowo Raya NO. 105 Kelurahan Limo, Kecamatan Limo, Depok.</div>
+        <hr>
+        <h3>Laporan Sub Kriteria</h3>
     </div>
-    <hr>
-    <h3 style="text-align:center;">Laporan Data Sub Kriteria</h3>
 
     <table>
         <thead>

@@ -68,7 +68,7 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
         <h2>Arzello Petshop</h2>
         <div class="sub-header">Jl. Pendowo Raya NO. 105 Kelurahan Limo, Kecamatan Limo, Depok.</div>
         <hr>
-        <h3>Laporan Visa</h3>
+        <h3>Laporan Supplier</h3>
     </div>
 
     <table>
@@ -198,13 +198,13 @@ if (isset($_GET['delete'])) {
   <div class="modal-dialog">
     <form method="post" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Tambah Supllier</h5>
+        <h5 class="modal-title">Tambah Supplier</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <input type="hidden" name="action" value="create">
         <div class="mb-3">
-          <label>Nama Supllier</label>
+          <label>Nama Supplier</label>
           <input type="text" name="name" class="form-control" required>
         </div>
       </div>
@@ -220,14 +220,14 @@ if (isset($_GET['delete'])) {
   <div class="modal-dialog">
     <form method="post" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Supllier</h5>
+        <h5 class="modal-title">Edit Supplier</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <input type="hidden" name="action" value="update">
         <input type="hidden" name="id" id="edit_id">
         <div class="mb-3">
-          <label>Nama Supllier</label>
+          <label>Nama Supplier</label>
           <input type="text" name="name" id="edit_name" class="form-control" required>
         </div>
       </div>
