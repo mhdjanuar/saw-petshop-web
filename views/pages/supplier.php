@@ -159,7 +159,7 @@ if (isset($_GET['delete'])) {
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama Employee</th>
+            <th>Nama Supplier</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -198,13 +198,13 @@ if (isset($_GET['delete'])) {
   <div class="modal-dialog">
     <form method="post" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Tambah Employee</h5>
+        <h5 class="modal-title">Tambah Supllier</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <input type="hidden" name="action" value="create">
         <div class="mb-3">
-          <label>Nama Employee</label>
+          <label>Nama Supllier</label>
           <input type="text" name="name" class="form-control" required>
         </div>
       </div>
@@ -220,14 +220,14 @@ if (isset($_GET['delete'])) {
   <div class="modal-dialog">
     <form method="post" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Employee</h5>
+        <h5 class="modal-title">Edit Supllier</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <input type="hidden" name="action" value="update">
         <input type="hidden" name="id" id="edit_id">
         <div class="mb-3">
-          <label>Nama Employee</label>
+          <label>Nama Supllier</label>
           <input type="text" name="name" id="edit_name" class="form-control" required>
         </div>
       </div>
