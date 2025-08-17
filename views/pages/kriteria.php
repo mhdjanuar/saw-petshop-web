@@ -1,3 +1,13 @@
+<?php 
+session_start();
+
+// cek apakah user sudah login
+if (!isset($_SESSION['user_id'])) {
+    header("Location: views/pages/login.php");
+    exit;
+}
+?>
+
 <?php include "../../config/database.php"; ?>
 <?php include "../layouts/header.php"; ?>
 

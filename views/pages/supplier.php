@@ -1,4 +1,12 @@
 <?php
+session_start();
+
+// cek apakah user sudah login
+if (!isset($_SESSION['user_id'])) {
+    header("Location: views/pages/login.php");
+    exit;
+}
+
 require_once '../../dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
