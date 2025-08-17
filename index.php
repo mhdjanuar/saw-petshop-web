@@ -1,5 +1,15 @@
-<?php include __DIR__ . "/config/database.php"; ?>
-<?php include __DIR__ . "/views/layouts/header.php"; ?>
+<?php
+session_start();
+
+// cek apakah user sudah login
+if (!isset($_SESSION['user_id'])) {
+    header("Location: views/pages/login.php");
+    exit;
+}
+
+include __DIR__ . "/config/database.php";
+include __DIR__ . "/views/layouts/header.php";
+?>
 
 <style>
   .dashboard-card {
