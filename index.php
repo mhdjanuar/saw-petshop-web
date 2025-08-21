@@ -9,6 +9,8 @@ if (!isset($_SESSION['user_id'])) {
 
 include __DIR__ . "/config/database.php";
 include __DIR__ . "/views/layouts/header.php";
+
+$baseUrl = "http://localhost/spk-saw-php/";
 ?>
 
 <style>
@@ -57,7 +59,7 @@ include __DIR__ . "/views/layouts/header.php";
 
 <div class="row dashboard-header text-center mb-4">
   <div class="col-12">
-    <img style="width: 150px; height: auto;" src="assets/img/dasboard-petshop.jpg" alt="Logo Petshop">
+    <img style="width: 150px; height: auto;" src="<?= $baseUrl ?>assets/img/dasboard-petshop.jpg" alt="Logo Petshop">
     <h2 class="fw-bold">Sistem Pendukung Keputusan</h2>
     <p class="text-muted">Pemilihan Supplier Petshop dengan Metode SAW</p>
   </div>
@@ -71,7 +73,7 @@ include __DIR__ . "/views/layouts/header.php";
         <div class="dashboard-icon"><i class="fas fa-store"></i></div>
         <h5 class="fw-bold">Supplier</h5>
         <p class="text-muted">Master data supplier</p>
-        <a href="views/pages/supplier.php" class="btn btn-dark w-100">Kelola</a>
+        <a href="<?= $baseUrl ?>views/pages/supplier.php" class="btn btn-dark w-100">Kelola</a>
       </div>
     </div>
   </div>
@@ -83,7 +85,7 @@ include __DIR__ . "/views/layouts/header.php";
         <div class="dashboard-icon"><i class="fas fa-balance-scale"></i></div>
         <h5 class="fw-bold">Kriteria</h5>
         <p class="text-muted">Bobot & tipe (benefit/cost)</p>
-        <a href="views/pages/kriteria.php" class="btn btn-dark w-100">Kelola</a>
+        <a href="<?= $baseUrl ?>views/pages/kriteria.php" class="btn btn-dark w-100">Kelola</a>
       </div>
     </div>
   </div>
@@ -95,7 +97,7 @@ include __DIR__ . "/views/layouts/header.php";
         <div class="dashboard-icon"><i class="fas fa-sliders-h"></i></div>
         <h5 class="fw-bold">Sub Kriteria</h5>
         <p class="text-muted">Master data sub kriteria</p>
-        <a href="views/pages/subkriteria.php" class="btn btn-dark w-100">Kelola</a>
+        <a href="<?= $baseUrl ?>views/pages/subkriteria.php" class="btn btn-dark w-100">Kelola</a>
       </div>
     </div>
   </div>
@@ -107,7 +109,7 @@ include __DIR__ . "/views/layouts/header.php";
         <div class="dashboard-icon"><i class="fas fa-edit"></i></div>
         <h5 class="fw-bold">Penilaian</h5>
         <p class="text-muted">Nilai alternatif per kriteria</p>
-        <a href="views/pages/penilaian.php" class="btn btn-dark w-100">Input</a>
+        <a href="<?= $baseUrl ?>views/pages/penilaian.php" class="btn btn-dark w-100">Input</a>
       </div>
     </div>
   </div>
@@ -119,7 +121,7 @@ include __DIR__ . "/views/layouts/header.php";
     <div class="card shadow-soft text-center">
       <div class="card-body">
         <h5 class="card-title fw-bold mb-3">Hasil Perankingan</h5>
-        <a href="views/pages/hasil.php" class="btn btn-success btn-lg">Lihat Hasil</a>
+        <a href="<?= $baseUrl ?>views/pages/hasil.php" class="btn btn-success btn-lg">Lihat Hasil</a>
       </div>
     </div>
   </div>
