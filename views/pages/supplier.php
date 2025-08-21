@@ -15,15 +15,49 @@ include "../../config/database.php";
 
 if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $options = new Options();
-    $options->set('isRemoteEnabled', true); // Penting supaya bisa load gambar remote
+    $options->set('isRemoteEnabled', true); 
     $dompdf = new Dompdf($options);
 
     // Query langsung ke tabel employees
     $sql = "SELECT * FROM employees ORDER BY id DESC";
-    $res = $conn->query($sql); // Pastikan $conn sudah tersedia sebelumnya
+    $res = $conn->query($sql); 
 
-    // Logo dari URL eksternal
-    $logoUri = 'https://i.ibb.co.com/MxMZ73BJ/petshop-200.png';
+    // Logo
+    $logoUri = 'https://i.postimg.cc/FRHxD9R4/petshop-200.png';
+
+    // === Tanggal Indonesia Manual ===
+    $hariIndo = [
+        'Sunday'    => 'Minggu',
+        'Monday'    => 'Senin',
+        'Tuesday'   => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday'  => 'Kamis',
+        'Friday'    => 'Jumat',
+        'Saturday'  => 'Sabtu'
+    ];
+
+    $bulanIndo = [
+        1  => 'Januari',
+        2  => 'Februari',
+        3  => 'Maret',
+        4  => 'April',
+        5  => 'Mei',
+        6  => 'Juni',
+        7  => 'Juli',
+        8  => 'Agustus',
+        9  => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember'
+    ];
+
+    $hari   = $hariIndo[date('l')];
+    $tanggal= date('d');
+    $bulan  = $bulanIndo[(int)date('m')];
+    $tahun  = date('Y');
+
+    $today = "$hari, $tanggal $bulan $tahun"; 
+    // contoh: Sabtu, 16 Agustus 2025
 
     $html = '
     <style>
@@ -93,17 +127,16 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     </table>
 
     <div class="footer">
-        Jakarta, Sabtu, 16 Agustus 2025<br><br><br>
+        Depok, ' . $today . '<br><br><br>
         <strong>HRD</strong><br>
         Arya Arindita
     </div>';
 
-    // Bersihkan output buffer sebelum render PDF
     ob_clean();
     $dompdf->loadHtml($html);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
-    $dompdf->stream("laporan_visa.pdf", ["Attachment" => false]);
+    $dompdf->stream("laporan_supplier.pdf", ["Attachment" => false]);
     exit;
 }
 

@@ -21,9 +21,10 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $options->set('isRemoteEnabled', true);
     $dompdf = new Dompdf($options);
 
-    $logoUri = 'https://i.ibb.co.com/MxMZ73BJ/petshop-200.png';
+    // URL logo
+    $logoUri = 'https://i.postimg.cc/FRHxD9R4/petshop-200.png';
 
-    // SAW QUERY
+    // QUERY SAW Ranking
     $query = "
         SELECT 
             p.name AS name,
@@ -64,10 +65,10 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
 
     $result = mysqli_query($conn, $query);
 
-    // HTML TEMPLATE
+    // TEMPLATE HTML
     $html = '
     <style>
-        body { font-family: Arial, sans-serif; font-size: 12px; }
+        body { font-family: Arial, sans-serif; font-size: 12px; margin: 30px; }
         .header { text-align: center; }
         .header img {
             width: 100px;
@@ -75,24 +76,25 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
             margin-bottom: 10px;
         }
         .header h2 { margin: 0; }
-        .sub-header { font-size: 12px; }
+        .sub-header { font-size: 11px; margin-bottom: 10px; }
+        hr { border: 0; border-top: 1px solid #000; margin: 10px 0; }
         table {
             border-collapse: collapse;
             width: 100%;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         th, td {
             border: 1px solid #000;
             padding: 6px;
             text-align: center;
+            font-size: 12px;
         }
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
         }
         .footer {
-            position: absolute;
-            bottom: 30px;
-            right: 50px;
+            margin-top: 50px;
             font-size: 12px;
             text-align: right;
         }
@@ -101,7 +103,7 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     <div class="header">
         <img src="' . $logoUri . '" alt="Logo Arzello Petshop" />
         <h2>Arzello Petshop</h2>
-        <div class="sub-header">Jl. Pendowo Raya NO. 105 Kelurahan Limo, Kecamatan Limo, Depok.</div>
+        <div class="sub-header">Jl. Pendowo Raya NO. 105, Kelurahan Limo, Kecamatan Limo, Depok.</div>
         <hr>
         <h3>Laporan Hasil Perankingan</h3>
     </div>

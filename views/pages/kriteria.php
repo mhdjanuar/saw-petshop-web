@@ -22,15 +22,48 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $options->set('isRemoteEnabled', true);
     $dompdf = new Dompdf($options);
 
-     // Logo dari URL eksternal
-    $logoUri = 'https://i.ibb.co.com/MxMZ73BJ/petshop-200.png';
+    // Logo dari URL eksternal
+    $logoUri = 'https://i.postimg.cc/FRHxD9R4/petshop-200.png';
 
     $res = $conn->query("SELECT * FROM criteria ORDER BY id");
+
+    // === Tanggal Indonesia Manual ===
+    $hariIndo = [
+        'Sunday'    => 'Minggu',
+        'Monday'    => 'Senin',
+        'Tuesday'   => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday'  => 'Kamis',
+        'Friday'    => 'Jumat',
+        'Saturday'  => 'Sabtu'
+    ];
+
+    $bulanIndo = [
+        1  => 'Januari',
+        2  => 'Februari',
+        3  => 'Maret',
+        4  => 'April',
+        5  => 'Mei',
+        6  => 'Juni',
+        7  => 'Juli',
+        8  => 'Agustus',
+        9  => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember'
+    ];
+
+    $hari   = $hariIndo[date('l')];
+    $tanggal= date('d');
+    $bulan  = $bulanIndo[(int)date('m')];
+    $tahun  = date('Y');
+
+    $today = "$hari, $tanggal $bulan $tahun";
 
     $html = '
     <style>
         body { font-family: Arial, sans-serif; font-size: 12px; }
-         .header { text-align: center; }
+        .header { text-align: center; }
         .header img {
             width: 100px;
             height: auto;
@@ -81,11 +114,12 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
 
     $no = 1;
     while ($r = $res->fetch_assoc()) {
-        $type = htmlspecialchars($r['type']);
+        $type  = htmlspecialchars($r['type']);
         $bobot = number_format($r['bobot'], 2);
+        $nama  = htmlspecialchars($r['nama']);
         $html .= "<tr>
             <td>$no</td>
-            <td>".htmlspecialchars($r['nama'])."</td>
+            <td>$nama</td>
             <td>$bobot</td>
             <td>$type</td>
         </tr>";
@@ -97,7 +131,7 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     </table>
 
     <div class="footer">
-        Jakarta, Sabtu, 16 Agustus 2025<br><br><br>
+        Depok, ' . $today . '<br><br><br>
         <strong>HRD</strong><br>
         Arya Arindita
     </div>';

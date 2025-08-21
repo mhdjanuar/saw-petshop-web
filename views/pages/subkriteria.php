@@ -29,7 +29,41 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
                          ORDER BY sc.id");
 
     // URL logo
-    $logoUri = 'https://i.ibb.co.com/MxMZ73BJ/petshop-200.png';
+    $logoUri = 'https://i.postimg.cc/FRHxD9R4/petshop-200.png';
+
+    // === Format Tanggal Indonesia (manual array) ===
+    $hariIndo = [
+        'Sunday'    => 'Minggu',
+        'Monday'    => 'Senin',
+        'Tuesday'   => 'Selasa',
+        'Wednesday' => 'Rabu',
+        'Thursday'  => 'Kamis',
+        'Friday'    => 'Jumat',
+        'Saturday'  => 'Sabtu'
+    ];
+
+    $bulanIndo = [
+        1  => 'Januari',
+        2  => 'Februari',
+        3  => 'Maret',
+        4  => 'April',
+        5  => 'Mei',
+        6  => 'Juni',
+        7  => 'Juli',
+        8  => 'Agustus',
+        9  => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember'
+    ];
+
+    $hari   = $hariIndo[date('l')];
+    $tanggal= date('d');
+    $bulan  = $bulanIndo[(int)date('m')];
+    $tahun  = date('Y');
+
+    $today = "$hari, $tanggal $bulan $tahun"; 
+    // contoh: Sabtu, 16 Agustus 2025
 
     $html = '
     <style>
@@ -99,7 +133,7 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     </table>
 
     <div class="footer">
-        Jakarta, Sabtu, 16 Agustus 2025<br><br><br>
+        Depok, ' . $today . '<br><br><br>
         <strong>HRD</strong><br>
         Arya Arindita
     </div>';
@@ -111,7 +145,6 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $dompdf->stream("laporan_sub_kriteria.pdf", ["Attachment" => false]);
     exit;
 }
-
 ?>
 
 <div class="card border-0 shadow-soft">
