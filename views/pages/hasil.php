@@ -22,7 +22,15 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $dompdf = new Dompdf($options);
 
     // URL logo
-    $logoUri = 'https://i.postimg.cc/FRHxD9R4/petshop-200.png';
+    // === Logo dari local (base64) ===
+    $logoPath = __DIR__ . '/../../assets/img/petshop-200.png';
+
+    if (!file_exists($logoPath)) {
+        die("Logo tidak ditemukan di: $logoPath");
+    }
+
+    $logoData = base64_encode(file_get_contents($logoPath));
+    $logoUri  = 'data:image/png;base64,' . $logoData;
 
     // QUERY SAW Ranking
     $query = "

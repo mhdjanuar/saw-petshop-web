@@ -22,8 +22,15 @@ if (isset($_GET['export']) && $_GET['export'] == "pdf") {
     $options->set('isRemoteEnabled', true);
     $dompdf = new Dompdf($options);
 
-    // Logo dari URL eksternal
-    $logoUri = 'https://i.postimg.cc/FRHxD9R4/petshop-200.png';
+// === Logo dari local (base64) ===
+    $logoPath = __DIR__ . '/../../assets/img/petshop-200.png';
+
+    if (!file_exists($logoPath)) {
+        die("Logo tidak ditemukan di: $logoPath");
+    }
+
+    $logoData = base64_encode(file_get_contents($logoPath));
+    $logoUri  = 'data:image/png;base64,' . $logoData;
 
     $res = $conn->query("SELECT * FROM criteria ORDER BY id");
 

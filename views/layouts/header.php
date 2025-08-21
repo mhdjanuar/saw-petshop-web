@@ -27,7 +27,7 @@ $base_url = "http://localhost/spk-saw-php/";
 <nav class="navbar navbar-expand-lg navbar-custom-bg shadow">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="<?= $base_url ?>index.php">
-      <img style="width: 80px; height: auto;" src="https://i.postimg.cc/FRHxD9R4/petshop-200.png" alt="Logo Petshop" height="40" class="me-2" />
+      <img style="width: 80px; height: auto;" src="<?= $base_url ?>assets/img/petshop-200.png" alt="Logo Petshop" height="40" class="me-2" />
       <span class="fw-bold text-dark">Arzello Petshop</span>
     </a>
 
